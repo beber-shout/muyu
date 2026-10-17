@@ -1,0 +1,17 @@
+# 本地预览与部署辅助文件
+preview-*.png
+deploy-status.txt
+deploy-result.json
+deploy.ps1
+cloudflared.exe
+muyu-site.zip
+muyu-upload/
+muyu-qr.png
+inspect.js
+shot.js
+test.js
+audio-test.js
+key-test.js
+*.log
+node_modules/
+.DS_Store
