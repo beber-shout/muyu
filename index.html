@@ -225,23 +225,24 @@
   .float{
     position:absolute;
     left:50%;
-    bottom:50%;
+    bottom:10%;
     font-family:var(--serif);
     font-size:19px;
     font-weight:700;
     letter-spacing:.02em;
     color:#FFF9EC;
     white-space:nowrap;
+    opacity:0;
     -webkit-text-stroke:.55px rgba(90,45,15,.45);
     text-shadow:0 2px 3px rgba(60,30,8,.55), 0 8px 20px rgba(60,30,8,.28);
-    animation:floatUp .95s cubic-bezier(.18,.72,.32,1) forwards;
   }
+  .float.go{animation:floatUp .95s cubic-bezier(.18,.72,.32,1) forwards}
   @media (prefers-color-scheme: dark){.float{color:#FFE7BE;-webkit-text-stroke:.55px rgba(0,0,0,.5);text-shadow:0 2px 4px rgba(0,0,0,.75), 0 8px 20px rgba(0,0,0,.45)}}
   @keyframes floatUp{
     0%{opacity:0;transform:translate(-50%,8px) scale(.82) rotate(var(--rot,0deg))}
     14%{opacity:1}
     68%{opacity:.96}
-    100%{opacity:0;transform:translate(-50%,-88px) scale(1.04) rotate(var(--rot,0deg))}
+    100%{opacity:0;transform:translate(-50%,-50px) scale(1.04) rotate(var(--rot,0deg))}
   }
   .spark{
     position:absolute;
@@ -720,20 +721,21 @@
     el._animTimer = setTimeout(function () { el.classList.remove(cls); }, ms);
   }
 
+  var floatEl = null;
+
   function spawnFloat() {
-    if (fx.childElementCount > 16 && fx.firstElementChild) {
-      fx.removeChild(fx.firstElementChild);
+    if (!floatEl) {
+      floatEl = document.createElement('span');
+      floatEl.className = 'float';
+      fx.appendChild(floatEl);
     }
-    var span = document.createElement('span');
-    span.className = 'float';
-    span.textContent = Math.random() < 0.56 ? '功德 +1' : '+1';
-    span.style.left = (47.5 + Math.random() * 5) + '%';
-    span.style.bottom = (46 + Math.random() * 8) + '%';
-    span.style.setProperty('--rot', (Math.random() * 10 - 5).toFixed(1) + 'deg');
-    fx.appendChild(span);
-    setTimeout(function () {
-      if (span.parentNode) span.parentNode.removeChild(span);
-    }, 1000);
+    floatEl.textContent = Math.random() < 0.56 ? '功德 +1' : '+1';
+    floatEl.style.left = (34 + Math.random() * 12) + '%';
+    floatEl.style.bottom = (7 + Math.random() * 6) + '%';
+    floatEl.style.setProperty('--rot', (Math.random() * 10 - 5).toFixed(1) + 'deg');
+    floatEl.classList.remove('go');
+    void floatEl.getBoundingClientRect();
+    floatEl.classList.add('go');
   }
 
   function celebrate() {
