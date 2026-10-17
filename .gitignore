@@ -1,8 +1,10 @@
 # 本地预览与部署辅助文件
 preview-*.png
+edge-auth*.png
 deploy-status.txt
 deploy-result.json
 deploy.ps1
+deploy-api.ps1
 cloudflared.exe
 muyu-site.zip
 muyu-upload/
