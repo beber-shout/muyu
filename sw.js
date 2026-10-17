@@ -1,5 +1,5 @@
 /* 电子木鱼 · 离线缓存 */
-const CACHE = 'muyu-v1';
+const CACHE = 'muyu-v2';
 const ASSETS = [
   './',
   './index.html',
